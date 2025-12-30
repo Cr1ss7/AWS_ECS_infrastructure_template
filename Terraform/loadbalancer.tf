@@ -31,21 +31,6 @@ resource "aws_lb_listener" "travelty_backend_listener_http" {
     }
 }
 
-resource "aws_lb_listener" "travelty_backend_listener_https" {
-    load_balancer_arn = aws_lb.travelty_backend_lb.arn
-    port = 443 
-    protocol = "HTTPS"
-    default_action {
-        type = "forward"
-        forward {
-            target_group {
-                arn = aws_lb_target_group.travelty_backend_target_group.arn
-                weight = 100
-            }
-        }
-    }
-}
-
 resource "aws_security_group" "alb_sg" {
     name = "alb_sg"
     description = "Security group for ALB"

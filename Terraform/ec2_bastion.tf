@@ -43,9 +43,3 @@ resource "aws_security_group" "bastion_sg" {
         IaC = var.tags.IaC
     } 
 }
-
-resource "aws_eip" "bastion_eip" {
-    domain = "vpc"
-    instance = aws_instance.bastion.id
-    tags = var.tags
-}

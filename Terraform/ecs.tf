@@ -1,5 +1,5 @@
 resource "aws_ecs_cluster" "travelty_backend_cluster" {
-  name = "travelty-backend-cluster"
+  name = var.ECS-Cluster-Name
   setting {
     name  = "containerInsights"
     value = "enabled"
@@ -7,7 +7,7 @@ resource "aws_ecs_cluster" "travelty_backend_cluster" {
 }
 
 resource "aws_ecs_task_definition" "travelty_backend_task" {
-    family = "travelty-backend-cluster"
+    family = var.ECS-Cluster-Name
     network_mode = "awsvpc"
     requires_compatibilities = ["FARGATE"]
     cpu = "256"
